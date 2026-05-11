@@ -173,10 +173,16 @@
         </p>
 
         <span class="section-label">FARM INFORMATION</span>
-        
-        <div class="field">
-            <label for="farm_name">Farm name & contact person</label> <!-- FIX 3: Added 'for' attributes for accessibility -->
-            <input type="text" id="farm_name" name="farm_name" placeholder="e.g., Green Valley Dairies — Jane Smith" required> <!-- FIX 4: Added 'required' to critical fields -->
+
+        <div class="form-grid">
+            <div class="field">
+                <label for="farm_name">Farm name & contact person</label>
+                <input type="text" id="farm_name" name="farm_name" placeholder="e.g., Green Valley Dairies — Jane Smith" required>
+            </div>
+            <div class="field">
+                <label for="phone">Contact phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="e.g., 027 123 4567" required>
+            </div>
         </div>
 
          <div class="field">
@@ -247,6 +253,14 @@
         <span class="section-label">CONTACT</span>
 
         <div class="form-grid">
+            <div class="field">
+                <label for="contact_name">Contact name</label>
+                <input type="text" id="contact_name" name="contact_name" placeholder="e.g., Jane Smith" required>
+            </div>
+            <div class="field">
+                <label for="contact_phone">Contact phone</label>
+                <input type="tel" id="contact_phone" name="contact_phone" placeholder="e.g., 027 123 4567" required>
+            </div>
             <div class="field full-width">
                 <label for="email">Your email</label>
                 <input type="email" id="email" name="email" placeholder="you@example.com" required>
