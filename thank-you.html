@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Independent AB Technician</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --primary-pink: #e94d89;
+            --dark-blue: #1a2a3a;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .thank-you-card {
+            background: var(--white);
+            width: 90%;
+            max-width: 800px;
+            display: flex;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Left side - Dark Panel */
+        .left-panel {
+            background-color: #233e48; /* Matching the dark teal/blue in the screenshot */
+            color: white;
+            padding: 60px 40px;
+            width: 35%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left-panel h1 {
+            font-size: 48px;
+            margin: 0;
+            color: var(--primary-pink);
+            line-height: 1;
+        }
+
+        .left-panel h2 {
+            font-size: 24px;
+            font-weight: 300;
+            margin-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+        }
+
+        /* Right side - Animation & Content */
+        .right-panel {
+            padding: 40px;
+            flex: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Cow Animation */
+        .cow-container {
+            width: 180px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .right-panel h3 {
+            font-size: 22px;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+        }
+
+        .right-panel span {
+            color: var(--primary-pink);
+        }
+
+        .right-panel p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .home-btn {
+            background-color: var(--primary-pink);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(233, 77, 137, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            .thank-you-card { flex-direction: column; }
+            .left-panel { width: 100%; padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="thank-you-card">
+    <div class="left-panel">
+        <h1>THANK YOU</h1>
+        <h2>FOR YOUR ENQUIRY</h2>
+    </div>
+
+    <div class="right-panel">
+        <!-- Cow Illustration -->
+        <div class="cow-container">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- Simplified Cow SVG to match the 3D style -->
+                <circle cx="100" cy="110" r="60" fill="#eee" />
+                <circle cx="80" cy="90" r="10" fill="#333" />
+                <circle cx="120" cy="90" r="10" fill="#333" />
+                <ellipse cx="100" cy="125" rx="35" ry="25" fill="#fbc5d8" />
+                <circle cx="90" cy="125" r="3" fill="#e94d89" />
+                <circle cx="110" cy="125" r="3" fill="#e94d89" />
+                <path d="M70,60 Q100,40 130,60" stroke="#333" stroke-width="8" fill="none" />
+            </svg>
+        </div>
+
+        <h3>We have received your <span>booking details</span> for the 2026 season.</h3>
+        <p>A bovine technician will review your request and get back to you within 24 hours. A copy of your submission has been sent to your email.</p>
+        
+        <a href="index.html" class="home-link">Return to Homepage</a>
+    </div>
+</div>
+
+</body>
+</html>

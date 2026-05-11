@@ -1,0 +1,17 @@
+/* ==========================================================================
+   On Board NZ Dairy — Custom Overrides
+   --------------------------------------------------------------------------
+   Tailwind (loaded via CDN in each HTML <head>) handles the bulk of styling.
+   This file is reserved for:
+     - Project-wide tokens Tailwind doesn't already provide
+     - Hand-written component styles that need more than utility classes
+     - Tweaks that override Tailwind defaults
+   Add new rules below as the project grows.
+   ========================================================================== */
+
+/* --- Global theme tokens ------------------------------------------------- */
+:root {
+  color-scheme: light;
+}
+
+/* --- Add your custom component styles below ------------------------------ */
