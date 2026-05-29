@@ -1,4 +1,5 @@
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,23 +11,8 @@
     <!-- Leaflet.js for interactive map -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .bg-custom {
-            background: radial-gradient(circle at top right, #fff1f2, #f0f5f9 50%);
-        }
-        #service-map {
-            height: 420px;
-            width: 100%;
-            border-radius: 3rem;
-            z-index: 0;
-        }
-        @media (max-width: 640px) {
-            #service-map { height: 300px; border-radius: 2rem; }
-        }
-    </style>
 </head>
-<body class="bg-custom min-h-screen flex items-start justify-center p-4 md:p-8">
+<body class="bg-custom min-h-screen flex items-start justify-center p-4 md:p-8 index-page-body">
 
     <!-- Main Container -->
     <div class="max-w-6xl w-full">
@@ -36,8 +22,8 @@
             <!-- Left Side: Branding & Link to booking.html -->
             <div class="flex-[1.2] p-6 sm:p-10 md:p-20 flex flex-col justify-start space-y-6 md:space-y-10 py-10 md:py-16">
                 <div class="space-y-6">
-                    <div style="display:inline-block; background:#fdf2f8; border:1px solid #fce7f3; border-radius:999px; padding:8px 18px; max-width:100%;">
-                        <p style="color:#ec4899; font-weight:800; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; margin:0; word-break:break-word;">Professional Artificial Breeding Technician</p>
+                    <div class="badge-pill">
+                        <p>Professional Artificial Breeding Technician</p>
                     </div>
                     <h1 class="text-[#1e293b] text-2xl sm:text-4xl md:text-7xl font-extrabold leading-tight tracking-tight break-words">
                         Independent <span class="text-pink-500">Artificial Breeding</span> Technician
@@ -111,51 +97,44 @@
 
     </div>
 
+    <script>
+        // Ngakuru, Rotorua District, New Zealand
+        const NGAKURU = [-38.373, 176.143];
+        const RADIUS_M = 50000; // 50 km in metres
+
+        const map = L.map('service-map', {
+            center: NGAKURU,
+            zoom: 9,
+            scrollWheelZoom: false   // prevents accidental zoom when scrolling the page
+        });
+
+        // OpenStreetMap tiles — free, no API key needed
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // 50 km service area circle
+        L.circle(NGAKURU, {
+            color: '#ec4899',
+            fillColor: '#ec4899',
+            fillOpacity: 0.12,
+            weight: 2.5,
+            radius: RADIUS_M
+        }).addTo(map);
+
+        // Centre marker with popup
+        const pinIcon = L.divIcon({
+            html: `<div class="map-pin"></div>`,
+            className: '',
+            iconSize: [22, 22],
+            iconAnchor: [11, 22]
+        });
+
+        L.marker(NGAKURU, { icon: pinIcon })
+            .addTo(map)
+            .bindPopup('<b>Ngakuru</b><br>Base of operations<br><span class="map-popup-label">50 km service radius</span>', { offset: [0, -18] })
+            .openPopup();
+    </script>
 </body>
-<script>
-    // Ngakuru, Rotorua District, New Zealand
-    const NGAKURU = [-38.373, 176.143];
-    const RADIUS_M = 50000; // 50 km in metres
-
-    const map = L.map('service-map', {
-        center: NGAKURU,
-        zoom: 9,
-        scrollWheelZoom: false   // prevents accidental zoom when scrolling the page
-    });
-
-    // OpenStreetMap tiles — free, no API key needed
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    // 50 km service area circle
-    L.circle(NGAKURU, {
-        color: '#ec4899',
-        fillColor: '#ec4899',
-        fillOpacity: 0.12,
-        weight: 2.5,
-        radius: RADIUS_M
-    }).addTo(map);
-
-    // Centre marker with popup
-    const pinIcon = L.divIcon({
-        html: `<div style="
-            background:#ec4899;
-            border:3px solid #fff;
-            border-radius:50% 50% 50% 0;
-            width:22px;height:22px;
-            transform:rotate(-45deg);
-            box-shadow:0 2px 8px rgba(236,72,153,0.5)">
-        </div>`,
-        className: '',
-        iconSize: [22, 22],
-        iconAnchor: [11, 22]
-    });
-
-    L.marker(NGAKURU, { icon: pinIcon })
-        .addTo(map)
-        .bindPopup('<b>Ngakuru</b><br>Base of operations<br><span style="color:#ec4899;font-size:12px;">50 km service radius</span>', { offset: [0, -18] })
-        .openPopup();
-</script>
 </html>

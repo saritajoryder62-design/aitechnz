@@ -1,66 +1,37 @@
-# AI Tech NZ - Independent Artificial Breeding Technician
+# Independent AB Technician 🐄
+**Professional Breeding Management System**
 
-**Live Site:** [astonishing-swan-59a350.netlify.app](https://astonishing-swan-59a350.netlify.app)
+**Live Site:** [https://astonishing-swan-59a350.netlify.app/](https://astonishing-swan-59a350.netlify.app/)
 
----
+A high-performance, responsive static website designed to manage breeding service requests for New Zealand dairy farms. Built with a focus on field usability and streamlined data collection via Netlify Forms.
 
-## About This Project
+## 📋 Features
+* **Farmer Request Portal:** Streamlined booking form for the 2026 mating season.
+* **Mobile Optimized:** Easy access via QR codes for on-farm use.
+* **Interactive Service Area:** Integrated Leaflet.js map showing technician coverage zones.
 
-This is a professional landing page for an independent **Artificial Breeding (AI) Technician** based in **Ngakuru, New Zealand**, built to serve the dairy farming industry during the 2026 mating season.
+## 🛠️ Tech Stack
+* **Frontend:** HTML5, Vanilla JavaScript, Tailwind CSS (via CDN)
+* **Forms:** Netlify Forms (Serverless data handling)
+* **Mapping:** Leaflet.js & OpenStreetMap
+* **Styling:** Unified Custom CSS for brand consistency
 
-The site allows farmers to view service information and book a mating date and time slot online - designed for simplicity and ease of use, including on mobile devices in the field.
+## 🚀 Getting Started
 
----
+### Prerequisites
+* Git installed on your workstation
+* A modern web browser
 
-## The Technician
+### Local Installation
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/saritajoryder62-design/aitechnz.git
+   ```
+2. **Open the project:**
+   Simply open `index.html` in your preferred web browser to view the site locally.
 
-- **Qualified NZQA Technician** - Nationally recognised Artificial Breeding certification
-- - **12+ Years Dairy & AI Experience** - Extensive hands-on background as a bovine technician and NZ Dairy Farmer
-  - - **Reliable Conception Rates** - Consistently delivering above-average results
-    - - **30,000+ Bovine Inseminated**
-      - - **Base of Operations:** Ngakuru, with a 50 km service radius
-       
-        - ---
+## 📝 License
+This project is developed for **Independent AB Technician**. All rights reserved.
 
-        ## Pages
-
-        | File | Description |
-        |---|---|
-        | `index.html` | Main landing page - branding, expertise, interactive service map |
-        | `booking.html` | Booking form for farmers to secure their 2026 mating slot |
-        | `thank-you.html` | Confirmation page shown after a successful booking |
-
-        ---
-
-        ## Features
-
-        - **Online Booking Form** - Farmers can submit their details and preferred dates easily
-        - - **Interactive Service Map** - Built with Leaflet.js, centred on Ngakuru with a 50 km radius overlay
-          - - **Live ETA Tracking** - Farmers can track the technician's ETA
-            - - **Mobile Optimised** - Fully responsive layout for on-farm use
-              - - **QR Code Access** - Easy on-site scanning for quick access to the booking page
-                - - **Professional Branding** - Clean, high-contrast pink & white design suited for outdoor screen use
-                 
-                  - ---
-
-                  ## Tech Stack
-
-                  | Layer | Technology |
-                  |---|---|
-                  | Frontend | HTML5, CSS3, Tailwind CSS |
-                  | Fonts | Google Fonts (Inter) |
-                  | Map | Leaflet.js |
-                  | Deployment | Netlify |
-
-                  ---
-
-                  ## Deployment
-
-                  The site is deployed on **Netlify** and is live at:
-                  [https://astonishing-swan-59a350.netlify.app](https://astonishing-swan-59a350.netlify.app)
-
-                  ---
-
-                  ## Contact
-
-                  For booking enquiries, please use the booking form on the live site.
+## 🤝 Support
+For support regarding booking enquiries, please use the contact form within the application or reach out via the provided email in the confirmation page.
