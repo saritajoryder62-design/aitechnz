@@ -1,29 +1,71 @@
-# On Board NZ Dairy 🐄
-**Professional Staff Onboarding & Breeding Management System**
+# AI Tech NZ — Independent Artificial Breeding Technician
 
-A full-stack (MERN) application designed to automate staff training protocols and manage breeding service requests for New Zealand dairy farms.
+**Live Site:** [aitechnz.vercel.app](https://aitechnz.vercel.app)
 
-## 📋 Features
-* **Farmer Request Portal:** Streamlined booking form for the 2026 mating season.
-* **Staff Onboarding:** Digital training modules to automate farm protocols.
-* **Live Analytics:** Integrated site management to track visitor engagement.
-* **Mobile Optimized:** Easy access via QR codes for on-farm use.
+---
 
-## 🛠️ Tech Stack
-* **Frontend:** React.js (Deployed via Vercel)
-* **Backend:** Node.js & Express (Deployed via Render)
-* **Database:** MongoDB Atlas (NoSQL)
-* **Styling:** Custom CSS with a focus on high-readability for outdoor use.
+## About This Project
 
-## 🚀 Getting Started
+This is a professional landing page for an independent **Artificial Breeding (AI) Technician** based in New Zealand, built to serve the dairy farming industry during the 2026 mating season.
 
-### Prerequisites
-* Node.js (v18 or higher)
-* MongoDB Atlas Account
-* Git installed on your workstation
+The site allows farmers to view service information and book a mating date and time slot online — designed for simplicity and ease of use, including on mobile devices in the field.
 
-### Local Installation
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/saritajoryder62-design/aitechnz.git](https://github.com/saritajoryder62-design/aitechnz.git)
+---
 
+## Pages
+
+| File | Description |
+|---|---|
+| `index.html` | Main landing page — branding, service overview, interactive map |
+| `booking.html` | Booking form for farmers to secure their 2026 mating slot |
+| `thank-you.html` | Confirmation page shown after a successful booking |
+
+---
+
+## Features
+
+- **Online Booking Form** — Farmers can submit their name, farm location, herd size, and preferred dates
+- - **Interactive Service Map** — Built with Leaflet.js, showing coverage areas across NZ
+  - - **Mobile Optimised** — Fully responsive layout for on-farm use
+    - - **QR Code Access** — Easy on-site scanning for quick access to the booking page
+      - - **Professional Branding** — Clean, high-contrast design suited for outdoor screen use
+       
+        - ---
+
+        ## Tech Stack
+
+        | Layer | Technology |
+        |---|---|
+        | Frontend | HTML5, CSS3, Tailwind CSS |
+        | Fonts | Google Fonts (Inter) |
+        | Map | Leaflet.js |
+        | Deployment | Vercel |
+
+        ---
+
+        ## Folder Structure
+
+        ```
+        aitechnz/
+        ├── css/
+        │   └── style.css        # Custom styles
+        ├── index.html           # Main landing page
+        ├── booking.html         # Booking form
+        ├── thank-you.html       # Post-booking confirmation
+        ├── qr-code.png          # QR code for the site
+        ├── ABOUT.md             # Project documentation
+        └── CLAUDE.md            # AI assistant context file
+        ```
+
+        ---
+
+        ## Deployment
+
+        The site is deployed on **Vercel** and is live at:
+        👉 [https://aitechnz.vercel.app](https://aitechnz.vercel.app)
+
+        ---
+
+        ## Contact
+
+        For booking enquiries, please use the booking form on the live site.
