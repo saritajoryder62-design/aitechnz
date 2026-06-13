@@ -207,7 +207,7 @@
             <p id="modalTitle" class="text-lg font-bold text-gray-900">
               Send Enquiry
             </p>
-            <p class="text-sm text-gray-600">
+            <p id="modalSubtitle" class="text-sm text-gray-600">
               Fill out the form below and we'll get back to you soon.
             </p>
           </div>
@@ -220,38 +220,75 @@
           </button>
         </div>
         <form id="quickEnquiryForm" class="space-y-4" name="enquiry" method="POST" netlify>
-          <div>
-            <label
-              for="enquiryEmail"
-              class="block text-sm font-semibold text-gray-700"
-              >Email</label
-            >
-            <input
-              id="enquiryEmail"
-              name="email"
-              type="email"
-              required
-              class="mt-2 w-full rounded-2xl border border-gray-300 px-4 py-3 text-sm focus:border-pink-500 focus:outline-none"
-              placeholder="your@email.com"
-            />
+          <input type="hidden" id="formMode" name="form_type" />
+
+          <!-- Contact Now Fields -->
+          <div id="contactFields" class="space-y-4">
+            <div>
+              <label
+                for="enquiryEmail"
+                class="block text-sm font-semibold text-gray-700"
+                >Email</label
+              >
+              <input
+                id="enquiryEmail"
+                name="email"
+                type="email"
+                class="mt-2 w-full rounded-2xl border border-gray-300 px-4 py-3 text-sm focus:border-pink-500 focus:outline-none"
+                placeholder="your@email.com"
+              />
+            </div>
+            <div>
+              <label
+                for="enquiryMessage"
+                class="block text-sm font-semibold text-gray-700"
+                >Your Enquiry</label
+              >
+              <textarea
+                id="enquiryMessage"
+                name="message"
+                rows="4"
+                class="mt-2 w-full rounded-2xl border border-gray-300 px-4 py-3 text-sm focus:border-pink-500 focus:outline-none resize-none"
+                placeholder="Tell us about your enquiry..."
+              ></textarea>
+            </div>
           </div>
-          <div>
-            <label
-              for="enquiryMessage"
-              class="block text-sm font-semibold text-gray-700"
-              >Your Enquiry</label
-            >
-            <textarea
-              id="enquiryMessage"
-              name="message"
-              required
-              rows="4"
-              class="mt-2 w-full rounded-2xl border border-gray-300 px-4 py-3 text-sm focus:border-pink-500 focus:outline-none resize-none"
-              placeholder="Tell us about your enquiry..."
-            ></textarea>
+
+          <!-- Schedule Call Fields -->
+          <div id="scheduleFields" class="space-y-4 hidden">
+            <div>
+              <label
+                for="callName"
+                class="block text-sm font-semibold text-gray-700"
+                >Name</label
+              >
+              <input
+                id="callName"
+                name="name"
+                type="text"
+                class="mt-2 w-full rounded-2xl border border-gray-300 px-4 py-3 text-sm focus:border-pink-500 focus:outline-none"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label
+                for="callPhone"
+                class="block text-sm font-semibold text-gray-700"
+                >Contact Number</label
+              >
+              <input
+                id="callPhone"
+                name="phone"
+                type="tel"
+                class="mt-2 w-full rounded-2xl border border-gray-300 px-4 py-3 text-sm focus:border-pink-500 focus:outline-none"
+                placeholder="e.g. 027 123 4567"
+              />
+            </div>
           </div>
+
           <button
             type="submit"
+            id="submitBtn"
             class="w-full rounded-2xl bg-[#ec4899] px-4 py-4 text-white font-bold hover:bg-[#db2777] transition"
           >
             Send Enquiry
@@ -308,10 +345,30 @@
       const scheduleCallBtn = document.getElementById("scheduleCallBtn");
       const modalCloseBtn = document.getElementById("modalCloseBtn");
       const modalTitle = document.getElementById("modalTitle");
+      const modalSubtitle = document.getElementById("modalSubtitle");
+      const contactFields = document.getElementById("contactFields");
+      const scheduleFields = document.getElementById("scheduleFields");
+      const formMode = document.getElementById("formMode");
+      const submitBtn = document.getElementById("submitBtn");
       const quickEnquiryForm = document.getElementById("quickEnquiryForm");
 
-      function openModal() {
-        modalTitle.textContent = "Send Enquiry";
+      function openModal(mode) {
+        formMode.value = mode;
+
+        if (mode === "contact") {
+          modalTitle.textContent = "Send Enquiry";
+          modalSubtitle.textContent = "Fill out the form below and we'll get back to you soon.";
+          contactFields.classList.remove("hidden");
+          scheduleFields.classList.add("hidden");
+          submitBtn.textContent = "Send Enquiry";
+        } else {
+          modalTitle.textContent = "Schedule a Call";
+          modalSubtitle.textContent = "Provide your details and we'll call you to schedule your time slot.";
+          contactFields.classList.add("hidden");
+          scheduleFields.classList.remove("hidden");
+          submitBtn.textContent = "Schedule Call";
+        }
+
         modalOverlay.classList.remove("hidden");
       }
 
@@ -320,21 +377,32 @@
         quickEnquiryForm.reset();
       }
 
-      contactNowBtn.addEventListener("click", openModal);
-      scheduleCallBtn.addEventListener("click", openModal);
+      contactNowBtn.addEventListener("click", () => openModal("contact"));
+      scheduleCallBtn.addEventListener("click", () => openModal("schedule"));
       modalCloseBtn.addEventListener("click", closeModal);
       modalOverlay.addEventListener("click", (event) => {
         if (event.target === modalOverlay) closeModal();
       });
 
       quickEnquiryForm.addEventListener("submit", (event) => {
-        const email = document.getElementById("enquiryEmail").value.trim();
-        const message = document.getElementById("enquiryMessage").value.trim();
+        const mode = formMode.value;
 
-        if (!email || !message) {
-          event.preventDefault();
-          alert("Please fill in all fields.");
-          return;
+        if (mode === "contact") {
+          const email = document.getElementById("enquiryEmail").value.trim();
+          const message = document.getElementById("enquiryMessage").value.trim();
+          if (!email || !message) {
+            event.preventDefault();
+            alert("Please fill in all fields.");
+            return;
+          }
+        } else {
+          const name = document.getElementById("callName").value.trim();
+          const phone = document.getElementById("callPhone").value.trim();
+          if (!name || !phone) {
+            event.preventDefault();
+            alert("Please fill in all fields.");
+            return;
+          }
         }
       });
     </script>
