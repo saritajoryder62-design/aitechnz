@@ -284,6 +284,19 @@
                 placeholder="e.g. 027 123 4567"
               />
             </div>
+            <div>
+              <label
+                for="callTime"
+                class="block text-sm font-semibold text-gray-700"
+                >Preferred Time to Call</label
+              >
+              <input
+                id="callTime"
+                name="preferred_time"
+                type="time"
+                class="mt-2 w-full rounded-2xl border border-gray-300 px-4 py-3 text-sm focus:border-pink-500 focus:outline-none"
+              />
+            </div>
           </div>
 
           <button
@@ -398,7 +411,8 @@
         } else {
           const name = document.getElementById("callName").value.trim();
           const phone = document.getElementById("callPhone").value.trim();
-          if (!name || !phone) {
+          const time = document.getElementById("callTime").value;
+          if (!name || !phone || !time) {
             event.preventDefault();
             alert("Please fill in all fields.");
             return;
