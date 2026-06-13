@@ -1,0 +1,85 @@
+name: Evidence Testing - aitechnz
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  check-pages:
+    name: Check HTML Pages Exist
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify required HTML files exist
+        run: |
+          echo "=== Evidence Test: Checking required HTML pages ==="
+          pages=("index.html" "booking.html" "thank-you.html")
+          all_passed=true
+          for page in "${pages[@]}"; do
+            if [ -f "$page" ]; then
+              echo "PASS: $page exists"
+            else
+              echo "FAIL: $page is MISSING"
+              all_passed=false
+            fi
+          done
+          if [ "$all_passed" = false ]; then
+            echo "One or more required pages are missing!"
+            exit 1
+          fi
+          echo "All required pages present."
+
+  security-check:
+    name: Security Evidence Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check no .env files were accidentally committed
+        run: |
+          echo "=== Evidence Test: No secrets committed ==="
+          if find . -name ".env" -o -name ".env.*" | grep -v ".git" | grep .; then
+            echo "FAIL: .env file(s) found in repository!"
+            exit 1
+          else
+            echo "PASS: No .env files found in repository"
+          fi
+
+      - name: Check for hardcoded secrets
+        run: |
+          echo "=== Evidence Test: Scanning for hardcoded secrets ==="
+          if grep -ri "password=" --include="*.html" --include="*.js" . 2>/dev/null | grep -v ".git"; then
+            echo "WARNING: Possible hardcoded password found"
+          else
+            echo "PASS: No obvious hardcoded secrets detected"
+          fi
+
+  link-check:
+    name: Check CSS and Asset References
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check CSS files referenced in HTML exist
+        run: |
+          echo "=== Evidence Test: CSS asset references ==="
+          for html_file in *.html; do
+            echo "Checking $html_file..."
+            grep -o 'href="[^"]*\.css"' "$html_file" | sed 's/href="//;s/"//' | while read css; do
+              if [[ "$css" != http* ]]; then
+                if [ -f "$css" ]; then
+                  echo "  PASS: $css exists"
+                else
+                  echo "  FAIL: $css not found"
+                fi
+              fi
+            done
+          done
+          echo "Asset check complete."

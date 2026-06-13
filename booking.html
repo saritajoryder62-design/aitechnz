@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking Enquiry | Professional Breeding Services</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="booking-page-body">
+    <div class="booking-container">
+      <div class="info-sidebar">
+        <span class="tag-line">Professional Breeding Services</span>
+        <h1 class="sidebar-title">Booking<br />Enquiry<br />Form</h1>
+        <p class="sidebar-text">
+          Secure your 2026 mating dates with a trusted industry professional.
+          Please provide as much detail as possible to assist with scheduling.
+        </p>
+      </div>
+
+      <form
+        class="form-content booking-form"
+        id="bookingForm"
+        name="booking-enquiry"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+      >
+        <!-- Required for JS submissions: tells Netlify which form this is -->
+        <input type="hidden" name="form-name" value="booking-enquiry" />
+
+        <!-- Honeypot: invisible to humans, traps bots -->
+        <p hidden>
+          <label
+            >Don't fill this out if you're human: <input name="bot-field"
+          /></label>
+        </p>
+
+        <span class="section-label">FARM INFORMATION</span>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="farm_name">Farm name & contact person</label>
+            <input
+              type="text"
+              id="farm_name"
+              name="farm_name"
+              placeholder="e.g., Green Valley Dairies — Jane Smith"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="phone">Contact phone</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="e.g., 027 123 4567"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="straws_count">Straws purchase</label>
+          <input
+            type="number"
+            id="straws_count"
+            name="straws_count"
+            placeholder="Number of straws purchased"
+            min="0"
+          />
+        </div>
+
+        <div class="field">
+          <label for="address">Farm address</label>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            placeholder="e.g., 123 Tutukau Road, Ngakuru"
+            required
+          />
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="herd_size">Herd size</label>
+            <input
+              type="number"
+              id="herd_size"
+              name="herd_size"
+              placeholder="e.g., 420"
+              min="1"
+            />
+          </div>
+          <div class="field">
+            <label for="mating_weeks">Length of mating (weeks)</label>
+            <input
+              type="number"
+              id="mating_weeks"
+              name="mating_weeks"
+              placeholder="e.g., 6"
+              min="1"
+            />
+          </div>
+          <div class="field">
+            <label for="start_date">Plan start date of mating</label>
+            <input type="date" id="start_date" name="start_date" />
+          </div>
+          <div class="field">
+            <label for="end_date">Plan end date of mating</label>
+            <input type="date" id="end_date" name="end_date" />
+          </div>
+          <div class="field">
+            <label for="setup_type">Location/setup for AI</label>
+            <select id="setup_type" name="setup_type">
+              <option value="">Select...</option>
+              <option value="rotary">Rotary</option>
+              <option value="herringbone">Herringbone</option>
+              <option value="in-race">In-race</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="ready_time">Time cows will be ready</label>
+            <input
+              type="time"
+              id="ready_time"
+              name="ready_time"
+              value="06:00"
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="setup_details">Brief explanation of location/setup</label>
+          <textarea
+            id="setup_details"
+            name="setup_details"
+            rows="3"
+            placeholder="Provide a brief example or details..."
+          ></textarea>
+        </div>
+
+        <span class="section-label">PROGRAM DETAILS</span>
+
+        <div class="field">
+          <label>Do you plan on doing cattle synchronization programs?</label>
+          <div class="radio-group">
+            <label class="radio-option"
+              ><input type="radio" name="sync" value="yes" /> Yes</label
+            >
+            <label class="radio-option"
+              ><input type="radio" name="sync" value="no" /> No</label
+            >
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Do you want heifers (R2 cattle inseminated)?</label>
+          <div class="radio-group">
+            <label class="radio-option"
+              ><input type="radio" name="heifers" value="yes" /> Yes</label
+            >
+            <label class="radio-option"
+              ><input type="radio" name="heifers" value="no" /> No</label
+            >
+          </div>
+        </div>
+
+        <span class="section-label" id="contact">CONTACT</span>
+        <p class="sidebar-text" style="margin-top: 0.5rem; margin-bottom: 1rem">
+          Request a quote now. Going service fee is
+          <strong>$1000 + GST</strong> per week and includes travel plus all
+          disposables. Provide your name and phone so we can schedule a call.
+        </p>
+        <div class="form-grid">
+          <div class="field">
+            <label for="contact_name">Contact name</label>
+            <input
+              type="text"
+              id="contact_name"
+              name="contact_name"
+              placeholder="e.g., Jane Smith"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="contact_phone">Contact phone</label>
+            <input
+              type="tel"
+              id="contact_phone"
+              name="contact_phone"
+              placeholder="e.g., 027 123 4567"
+              required
+            />
+          </div>
+          <div class="field full-width">
+            <label for="email">Your email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">Additional notes</label>
+          <textarea id="notes" name="notes" rows="2"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Booking Request</button>
+      </form>
+    </div>
+
+    <!-- Form submit handler -->
+    <!--
+    Netlify Forms (production):
+      - Posts form data to "/" as URL-encoded form data.
+      - Netlify's build-time scanner detects the <form data-netlify="true"> tag
+        and wires up the catcher automatically.
+      - Email notifications are configured in the Netlify dashboard
+        (Site → Forms → Settings → Form notifications).
+
+    Local dev:
+      - There's no Netlify catcher running locally, so the POST will fail.
+      - The catch block still redirects to thank-you.html so you can test the flow.
+
+    Future MERN upgrade path:
+      - Swap the fetch URL from "/" to your Express endpoint (e.g. /api/bookings).
+      - Keep the redirect on success, show an inline error on failure.
+-->
+    <script>
+      document
+        .getElementById("bookingForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const form = e.target;
+
+          // --- Business rule: AB mating period must be <= 6 weeks (42 days) ---
+          // NZ dairy standard: a single mating block typically runs 6 weeks max.
+          // Catching bad date ranges here saves chasing up farmers later.
+          const startValue = form.start_date.value;
+          const endValue = form.end_date.value;
+          if (startValue && endValue) {
+            const diffDays =
+              (new Date(endValue) - new Date(startValue)) /
+              (1000 * 60 * 60 * 24);
+            if (diffDays < 0) {
+              alert("End date must be on or after the start date.");
+              return;
+            }
+            if (diffDays > 42) {
+              alert(
+                "The mating period cannot be longer than 6 weeks (42 days). Please adjust the start or end date.",
+              );
+              return;
+            }
+          }
+
+          const body = new URLSearchParams(new FormData(form)).toString();
+
+          try {
+            const response = await fetch("/", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: body,
+            });
+            if (!response.ok) {
+              console.warn(
+                "Form POST returned non-OK status:",
+                response.status,
+              );
+            }
+          } catch (err) {
+            // Most common cause: testing locally with no Netlify catcher running.
+            console.warn("Form POST failed (expected during local dev):", err);
+          }
+
+          window.location.href = "thank-you.html";
+        });
+    </script>
+  </body>
+</html>
