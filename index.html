@@ -205,10 +205,10 @@
         <div class="modal-header">
           <div>
             <p id="modalTitle" class="text-lg font-bold text-gray-900">
-              Quick Enquiry
+              Send Enquiry
             </p>
             <p class="text-sm text-gray-600">
-              Enter your name and phone number to reach out directly.
+              Fill out the form below and we'll get back to you soon.
             </p>
           </div>
           <button
@@ -219,37 +219,36 @@
             ✕
           </button>
         </div>
-        <form id="quickEnquiryForm" class="space-y-4">
-          <input type="hidden" id="modalMode" value="contact" />
+        <form id="quickEnquiryForm" class="space-y-4" name="enquiry" method="POST" netlify>
           <div>
             <label
-              for="quickName"
+              for="enquiryEmail"
               class="block text-sm font-semibold text-gray-700"
-              >Name</label
+              >Email</label
             >
             <input
-              id="quickName"
-              name="name"
-              type="text"
+              id="enquiryEmail"
+              name="email"
+              type="email"
               required
               class="mt-2 w-full rounded-2xl border border-gray-300 px-4 py-3 text-sm focus:border-pink-500 focus:outline-none"
-              placeholder="Your name"
+              placeholder="your@email.com"
             />
           </div>
           <div>
             <label
-              for="quickPhone"
+              for="enquiryMessage"
               class="block text-sm font-semibold text-gray-700"
-              >Phone number</label
+              >Your Enquiry</label
             >
-            <input
-              id="quickPhone"
-              name="phone"
-              type="tel"
+            <textarea
+              id="enquiryMessage"
+              name="message"
               required
-              class="mt-2 w-full rounded-2xl border border-gray-300 px-4 py-3 text-sm focus:border-pink-500 focus:outline-none"
-              placeholder="e.g. 027 123 4567"
-            />
+              rows="4"
+              class="mt-2 w-full rounded-2xl border border-gray-300 px-4 py-3 text-sm focus:border-pink-500 focus:outline-none resize-none"
+              placeholder="Tell us about your enquiry..."
+            ></textarea>
           </div>
           <button
             type="submit"
@@ -309,41 +308,34 @@
       const scheduleCallBtn = document.getElementById("scheduleCallBtn");
       const modalCloseBtn = document.getElementById("modalCloseBtn");
       const modalTitle = document.getElementById("modalTitle");
-      const modalMode = document.getElementById("modalMode");
       const quickEnquiryForm = document.getElementById("quickEnquiryForm");
 
-      function openModal(mode) {
-        modalMode.value = mode;
-        modalTitle.textContent =
-          mode === "schedule" ? "Schedule a Call" : "Quick Enquiry";
+      function openModal() {
+        modalTitle.textContent = "Send Enquiry";
         modalOverlay.classList.remove("hidden");
       }
 
       function closeModal() {
         modalOverlay.classList.add("hidden");
+        quickEnquiryForm.reset();
       }
 
-      contactNowBtn.addEventListener("click", () => openModal("contact"));
-      scheduleCallBtn.addEventListener("click", () => openModal("schedule"));
+      contactNowBtn.addEventListener("click", openModal);
+      scheduleCallBtn.addEventListener("click", openModal);
       modalCloseBtn.addEventListener("click", closeModal);
       modalOverlay.addEventListener("click", (event) => {
         if (event.target === modalOverlay) closeModal();
       });
 
       quickEnquiryForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const name = document.getElementById("quickName").value.trim();
-        const phone = document.getElementById("quickPhone").value.trim();
-        const mode = modalMode.value;
+        const email = document.getElementById("enquiryEmail").value.trim();
+        const message = document.getElementById("enquiryMessage").value.trim();
 
-        if (!name || !phone) {
-          alert("Please enter your name and phone number.");
+        if (!email || !message) {
+          event.preventDefault();
+          alert("Please fill in all fields.");
           return;
         }
-
-        const subject = mode === "schedule" ? "Schedule a Call" : "Contact Now";
-        const body = `Hello,%0A%0A${mode === "schedule" ? "Please call me." : "I would like to contact you."}%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0A%0A`;
-        window.location.href = `mailto:sjryder121@hotmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
       });
     </script>
   </body>
